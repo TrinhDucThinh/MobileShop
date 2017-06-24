@@ -12,7 +12,7 @@ namespace MobileShop.Model.Models
     public class VisitorStatistic
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]
