@@ -3,7 +3,11 @@ using MobileShop.Model.Models;
 
 namespace MobileShop.Data.Repositories
 {
-    public class PostTagRepository : RepositoryBase<PostTag>
+    public interface IPostTagRepository : IRepository<PostTag>
+    {
+    }
+
+    public class PostTagRepository : RepositoryBase<PostTag>,IPostTagRepository
     {
         public PostTagRepository(IDbFactory dbFactory) : base(dbFactory)
         {
