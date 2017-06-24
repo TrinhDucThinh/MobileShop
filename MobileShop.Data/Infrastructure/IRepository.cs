@@ -11,10 +11,14 @@ namespace MobileShop.Data.Infrastructure
     {
         //Marks an entity as new
         void Add(T entity);
+
+        T Addr(T entity);
         //Marks as entity as modified
         void Update(T entity);
         // Marks an entity to be removed
         void Delete(T entity);
+        
+        void Delete(int Id);
 
         //Delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);

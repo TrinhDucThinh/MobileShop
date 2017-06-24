@@ -10,6 +10,7 @@ namespace MobileShop.Data.Infrastructure
 {
     public abstract class RepositoryBase<T>:IRepository<T> where T :  class
     {
+       
         #region Properties
         private MobileShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
@@ -48,7 +49,11 @@ namespace MobileShop.Data.Infrastructure
         {
             dbSet.Remove(entity);
         }
-
+        public virtual void Delete(int id)
+        {
+            var entity = dbSet.Find(id);
+            dbSet.Remove(entity);
+        }
         public virtual void DeleteMulti(Expression<Func<T, bool>> where)
         {
             IEnumerable<T> objects = dbSet.Where<T>(where).AsEnumerable();
@@ -131,6 +136,12 @@ namespace MobileShop.Data.Infrastructure
         public bool CheckContains(Expression<Func<T, bool>> predicate)
         {
             return dataContext.Set<T>().Count<T>(predicate) > 0;
+        }
+
+        public T Addr(T entity)
+        {
+            dbSet.Add(entity);
+            return dbSet.Find(entity);
         }
         #endregion
     }
