@@ -20,6 +20,7 @@ namespace MobileShop.Web.Api
             this._postCategoryService = postCategoryService;
         }
 
+        [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request,()=> {
