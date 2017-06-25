@@ -1,0 +1,4 @@
+﻿-Test switch
+	+return object in CRUD
+	+getByID with id is string or int <replace int ID by T ID in method 
+	GetByID(int id) of RepositoryBase

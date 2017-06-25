@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Note\lesson7_ImplementRepositoryAndUnitOfWordAndMigrationDB.txt" />
+    <Content Include="Note\lesson9_InComplete_CompleteServiceLayerAndImplementExternalMethodRepository.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
