@@ -13,14 +13,11 @@
     <script src="~/Scripts/plugins/spa/app.js"></script>
 </head>
 <body>
-    <div ng-controller="schoolController"> 
-        {{message}}
-        <div ng-controller="teacherController">
-            {{message}}
-        </div>
-        <div ng-controller="studentController">
-            {{message}}
-        </div>
+    <div ng-controller="myController"> 
+        <input type="text" ng-model="num"/>
+        <span>Value of textbox:{{num}}</span>
+        <button ng-click="checkNumber()">CheckNumber</button>
+        <p>{{message}}</p>
     </div>
 </body>
 </html>

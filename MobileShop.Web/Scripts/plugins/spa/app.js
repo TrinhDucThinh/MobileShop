@@ -2,23 +2,31 @@
 var myModule = angular.module("myModule", []);
 
 //register controller
-myModule.controller("schoolController", schoolController);
-myModule.controller("teacherController", teacherController);
-myModule.controller("studentController", studentController);
+myModule.controller("myController", myController);
+myModule.service("Validator", Validator);
 
-schoolController.$inject("$rootScope,$scope");
-teacherController.$inject("$scope");
-studentController.$inject("$scope");
-//declare controller
+myController.$inject = ['$scope','Validator'];
 
-function schoolController($rootScope,$scope) {
-    $rootScope.message = "Anouncement from school";
+function myController($scope,Validator) {
+  
+    $scope.message = "please enter a number";
+    $scope.num = 1;
+    $scope.checkNumber = function () {
+        $scope.message = Validator.checkNumber($scope.num);
+    }
 }
 
-function teacherController($scope) {
-    $scope.message="Anouncement from teacher";
-}
+//Create service
+function Validator() {
 
-function studentController($scope) {
-    $scope.message = "Anouncement from student";
+    return {
+        checkNumber: checkNumber
+    }
+
+    function checkNumber(input) {
+        if (input % 2 == 0)
+            return input + " is even";
+        else
+            return input + " is odd";
+    }
 }
