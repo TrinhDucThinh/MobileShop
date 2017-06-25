@@ -43,6 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Note\lesson11_Incomplte_WebApiBaseTheoryAndTheWayToOrganizeTheProjectStructure.txt" />
     <Content Include="Note\lesson7_ImplementRepositoryAndUnitOfWordAndMigrationDB.txt" />
     <Content Include="Note\lesson9_InComplete_CompleteServiceLayerAndImplementExternalMethodRepository.txt" />
   </ItemGroup>

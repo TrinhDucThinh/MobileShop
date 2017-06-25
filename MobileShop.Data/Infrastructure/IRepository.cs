@@ -10,7 +10,7 @@ namespace MobileShop.Data.Infrastructure
     public interface IRepository<T> where T: class
     {
         //Marks an entity as new
-        void Add(T entity);
+        T Add(T entity);
 
         T Addr(T entity);
         //Marks as entity as modified

@@ -8,10 +8,11 @@ namespace MobileShop.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory postCategory);
+        PostCategory Add(PostCategory postCategory);
         PostCategory GetById(int id);
         void Update(PostCategory postCategory);
         void Delete(int id);
+        void SaveChanges();
 
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
@@ -28,9 +29,9 @@ namespace MobileShop.Service
             this._postCategoryRepository = postCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(PostCategory postCategory)
+        public PostCategory Add(PostCategory postCategory)
         {
-            _postCategoryRepository.Add(postCategory);
+            return _postCategoryRepository.Add(postCategory);
         }
 
         public void Delete(int id)
@@ -52,6 +53,11 @@ namespace MobileShop.Service
         public PostCategory GetById(int id)
         {
             return _postCategoryRepository.GetSingleById(id);
+        }
+
+        public void SaveChanges()
+        {
+            _unitOfWork.Commit();
         }
 
         public void Update(PostCategory postCategory)
