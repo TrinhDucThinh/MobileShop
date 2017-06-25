@@ -1,11 +1,12 @@
-﻿using MobileShop.Model.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using MobileShop.Model.Models;
 using System.Data.Entity;
 
-namespace MobileShop.Data.Infrastructure
+namespace MobileShop.Data
 {
-    public class MobileShopDbContext : DbContext
+    public class MobileShopDbContext : IdentityDbContext<ApplicationUser>
     {
-        public MobileShopDbContext(): base("MobileShopConnection")
+        public MobileShopDbContext() : base("MobileShopConnection")
         {
             //not load child table when load parent table
             this.Configuration.LazyLoadingEnabled = false;
@@ -31,14 +32,18 @@ namespace MobileShop.Data.Infrastructure
         public DbSet<SupportOnline> SupportOnlines { set; get; }
         public DbSet<SystemConfig> SystemConfigs { set; get; }
 
-        
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
-
         public DbSet<Error> Errors { set; get; }
+
+        public static MobileShopDbContext Create()
+        {
+            return new MobileShopDbContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
