@@ -2,12 +2,23 @@
 var myModule = angular.module("myModule", []);
 
 //register controller
-myModule.controller("myController", myController);
+myModule.controller("schoolController", schoolController);
+myModule.controller("teacherController", teacherController);
+myModule.controller("studentController", studentController);
 
-myController.$inject("$scope");
-
+schoolController.$inject("$rootScope,$scope");
+teacherController.$inject("$scope");
+studentController.$inject("$scope");
 //declare controller
 
-function myController($scope) {
-    $scope.message = "This is my message from controller";
+function schoolController($rootScope,$scope) {
+    $rootScope.message = "Anouncement from school";
+}
+
+function teacherController($scope) {
+    $scope.message="Anouncement from teacher";
+}
+
+function studentController($scope) {
+    $scope.message = "Anouncement from student";
 }
