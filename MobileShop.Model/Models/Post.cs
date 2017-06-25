@@ -1,4 +1,5 @@
 ﻿using MobileShop.Model.Abstract;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -33,12 +34,10 @@ namespace MobileShop.Model.Models
 
         public int? ViewCount { get; set; }
 
-        [Required]
-        public bool Status { get; set; }
-
+        
         public int  CategoryID { get; set; }
 
-        
+        public virtual IEnumerable<PostTag> PostTags { set; get; }
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategories { set; get; }

@@ -66,6 +66,14 @@
     <Compile Include="Migrations\201706250438391_updateAuditable.Designer.cs">
       <DependentUpon>201706250438391_updateAuditable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706250756388_AddIEnumerableForProduct_Post.cs" />
+    <Compile Include="Migrations\201706250756388_AddIEnumerableForProduct_Post.Designer.cs">
+      <DependentUpon>201706250756388_AddIEnumerableForProduct_Post.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706250830050_changeDb.cs" />
+    <Compile Include="Migrations\201706250830050_changeDb.Designer.cs">
+      <DependentUpon>201706250830050_changeDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileShopDbContext.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -114,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706250438391_updateAuditable.resx">
       <DependentUpon>201706250438391_updateAuditable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706250756388_AddIEnumerableForProduct_Post.resx">
+      <DependentUpon>201706250756388_AddIEnumerableForProduct_Post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706250830050_changeDb.resx">
+      <DependentUpon>201706250830050_changeDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

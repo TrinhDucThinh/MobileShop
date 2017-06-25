@@ -26,6 +26,7 @@ namespace MobileShop.Model.Abstract
         [MaxLength(256)]
         public string MetaDescription { set; get; }
 
+        [Required]
         public bool Status { set; get; }
 
     }

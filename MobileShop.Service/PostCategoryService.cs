@@ -1,34 +1,38 @@
-﻿using MobileShop.Model.Models;
-using System.Collections.Generic;
-using System;
+﻿using MobileShop.Data.Infrastructure;
 using MobileShop.Data.Repositories;
-using MobileShop.Data.Infrastructure;
+using MobileShop.Model.Models;
+using System.Collections.Generic;
 
 namespace MobileShop.Service
 {
     public interface IPostCategoryService
     {
         PostCategory Add(PostCategory postCategory);
+
         PostCategory GetById(int id);
+
         void Update(PostCategory postCategory);
+
         void Delete(int id);
+
         void SaveChanges();
 
         IEnumerable<PostCategory> GetAll();
-        IEnumerable<PostCategory> GetAllByParentId(int parentId);
-        
 
+        IEnumerable<PostCategory> GetAllByParentId(int parentId);
     }
+
     public class PostCategoryService : IPostCategoryService
     {
-        IPostCategoryRepository _postCategoryRepository;
-        IUnitOfWork _unitOfWork;
+        private IPostCategoryRepository _postCategoryRepository;
+        private IUnitOfWork _unitOfWork;
 
         public PostCategoryService(IPostCategoryRepository postCategoryRepository, IUnitOfWork unitOfWork)
         {
             this._postCategoryRepository = postCategoryRepository;
             this._unitOfWork = unitOfWork;
         }
+
         public PostCategory Add(PostCategory postCategory)
         {
             return _postCategoryRepository.Add(postCategory);
@@ -37,7 +41,6 @@ namespace MobileShop.Service
         public void Delete(int id)
         {
             _postCategoryRepository.Delete(id);
-
         }
 
         public IEnumerable<PostCategory> GetAll()
