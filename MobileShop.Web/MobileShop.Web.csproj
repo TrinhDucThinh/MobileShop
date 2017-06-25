@@ -217,6 +217,7 @@
     <Content Include="Content\Site.css" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
+    <Content Include="Scripts\customDirective.html" />
     <Content Include="Scripts\plugins\angular\angular-csp.css" />
     <Content Include="Scripts\plugins\angular\angular.js" />
     <Content Include="Scripts\plugins\angular\angular.min.js" />

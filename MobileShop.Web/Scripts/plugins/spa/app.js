@@ -3,9 +3,10 @@ var myModule = angular.module("myModule", []);
 
 //register controller
 myModule.controller("myController", myController);
-myModule.service("Validator", Validator);
+myModule.service("ValidatorService", ValidatorService);
+myModule.directive("mobileShopDirective", mobileShopDirective)
 
-myController.$inject = ['$scope','Validator'];
+myController.$inject = ['$scope', 'ValidatorService'];
 
 function myController($scope,Validator) {
   
@@ -17,7 +18,7 @@ function myController($scope,Validator) {
 }
 
 //Create service
-function Validator() {
+function ValidatorService() {
 
     return {
         checkNumber: checkNumber
@@ -28,5 +29,15 @@ function Validator() {
             return input + " is even";
         else
             return input + " is odd";
+    }
+}
+
+
+//create custom directive
+function mobileShopDirective() {
+    return {
+        //template:"<h2>This is a custom directive</h2>"
+        restrict:"A",
+        templateUrl:"/Scripts/customDirective.html"
     }
 }
