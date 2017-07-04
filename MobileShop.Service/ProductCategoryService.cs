@@ -19,7 +19,7 @@ namespace MobileShop.Service
 
         void SaveChanges();
 
-        IEnumerable<ProductCategory> GetAll();
+        IEnumerable<ProductCategory> GetAll(string keyword);
 
         ProductCategory GetByID(int id);
 
@@ -45,9 +45,13 @@ namespace MobileShop.Service
             return _productCategoryRepository.Delete(id);
         }
 
-        public IEnumerable<ProductCategory> GetAll()
+        public IEnumerable<ProductCategory> GetAll(string keyword)
         {
-            return _productCategoryRepository.GetAll();
+            if (!string.IsNullOrEmpty(keyword))
+                return _productCategoryRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
+            else
+                return _productCategoryRepository.GetAll();
+
         }
 
         public IEnumerable<ProductCategory> GetAllByParentId(int parentId)
