@@ -1,5 +1,8 @@
 ﻿(function () {
-    angular.module('mobileshop',['mobileshop.products','mobileshop.common']).config(config);
+    angular.module('mobileshop',
+        ['mobileshop.products',
+        'mobileshop.product_categories',
+        'mobileshop.common']).config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     function config($stateProvider, $urlRouterProvider) {

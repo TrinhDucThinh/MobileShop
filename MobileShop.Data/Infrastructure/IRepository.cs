@@ -18,7 +18,9 @@ namespace MobileShop.Data.Infrastructure
         // Marks an entity to be removed
         void Delete(T entity);
         
-        void Delete(int Id);
+        //void Delete(int Id);
+
+        T Delete(int id);
 
         //Delete multi records
         void DeleteMulti(Expression<Func<T, bool>> where);

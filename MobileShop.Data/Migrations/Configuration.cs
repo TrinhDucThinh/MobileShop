@@ -4,6 +4,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -19,6 +20,14 @@
         {
             //  This method will be called after migrating to the latest version.
 
+            //Create user sample
+           // CreateUser(context);
+            CreateProductCategorySample(context);
+
+        }
+
+        private void CreateUser(MobileShopDbContext context)
+        {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MobileShopDbContext()));
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new MobileShopDbContext()));
@@ -44,6 +53,21 @@
             var adminUser = manager.FindByEmail("thinhtd2401@gmail.com");
 
             manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+        }
+        private void CreateProductCategorySample(MobileShopDbContext context)
+        {
+            if (context.ProductCategories.Count() == 0)
+            {
+                List<ProductCategory> listProductCategory = new List<ProductCategory>()
+            {
+                new ProductCategory() { Name="Điện lạnh",Alias="dien-lanh",Status=true },
+                 new ProductCategory() { Name="Viễn thông",Alias="vien-thong",Status=true },
+                  new ProductCategory() { Name="Đồ gia dụng",Alias="do-gia-dung",Status=true },
+                   new ProductCategory() { Name="Mỹ phẩm",Alias="my-pham",Status=true }
+            };
+                context.ProductCategories.AddRange(listProductCategory);
+                context.SaveChanges();
+            }
 
         }
     }

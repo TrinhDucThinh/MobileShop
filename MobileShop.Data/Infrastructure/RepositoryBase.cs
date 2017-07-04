@@ -49,10 +49,10 @@ namespace MobileShop.Data.Infrastructure
         {
             dbSet.Remove(entity);
         }
-        public virtual void Delete(int id)
+        public virtual T Delete(int id)
         {
             var entity = dbSet.Find(id);
-            dbSet.Remove(entity);
+            return dbSet.Remove(entity);
         }
         public virtual void DeleteMulti(Expression<Func<T, bool>> where)
         {
