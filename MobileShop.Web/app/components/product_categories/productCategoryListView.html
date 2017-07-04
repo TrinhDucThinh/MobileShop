@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-group">
-                        <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa">
+                        <input type="text" class="form-control" ng-keypress="EnterSearch($event)" ng-model="keyword" placeholder="Từ khóa">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" ng-click="search()">Tìm kiếm</button>
                         </span>
