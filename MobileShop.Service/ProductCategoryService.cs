@@ -21,6 +21,8 @@ namespace MobileShop.Service
 
         IEnumerable<ProductCategory> GetAll(string keyword);
 
+        IEnumerable<ProductCategory> GetAll();
+
         ProductCategory GetByID(int id);
 
     }
@@ -74,5 +76,9 @@ namespace MobileShop.Service
             _productCategoryRepository.Update(ProductCategory);
         }
 
+        public IEnumerable<ProductCategory> GetAll()
+        {
+            return _productCategoryRepository.GetAll();
+        }
     }
 }

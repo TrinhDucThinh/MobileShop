@@ -86,6 +86,10 @@
     <Compile Include="Migrations\201706251627200_AddIdentity.Designer.cs">
       <DependentUpon>201706251627200_AddIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707041515497_ChangeHomeFlag.cs" />
+    <Compile Include="Migrations\201707041515497_ChangeHomeFlag.Designer.cs">
+      <DependentUpon>201707041515497_ChangeHomeFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileShopDbContext.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -143,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706251627200_AddIdentity.resx">
       <DependentUpon>201706251627200_AddIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707041515497_ChangeHomeFlag.resx">
+      <DependentUpon>201707041515497_ChangeHomeFlag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

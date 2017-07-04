@@ -22,7 +22,7 @@
 
             //Create user sample
            // CreateUser(context);
-            CreateProductCategorySample(context);
+           // CreateProductCategorySample(context);
 
         }
 

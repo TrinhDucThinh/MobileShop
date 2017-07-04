@@ -29,7 +29,7 @@ namespace MobileShop.Model.Models
         [MaxLength(256)]
         public string Image { get; set; }
 
-        public bool HomeFlag { get; set; }
+        public bool? HomeFlag { get; set; }
 
         public virtual IEnumerable<Product> Products { set; get; }
     }
