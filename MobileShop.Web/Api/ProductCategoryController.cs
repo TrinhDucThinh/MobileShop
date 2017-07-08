@@ -133,5 +133,22 @@ namespace MobileShop.Web.Api
                 return response;
             });
         }
+
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                var oldProductCategory = _productCategoryService.Delete(id);
+                _productCategoryService.SaveChanges();
+
+                var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);
+                response = request.CreateResponse(HttpStatusCode.OK, oldProductCategory);
+                return response;
+            });
+        }
     }
 }

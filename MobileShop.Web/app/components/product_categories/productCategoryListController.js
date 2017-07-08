@@ -1,16 +1,17 @@
 ﻿(function (app) {
     app.controller('productCategoryListController', productCategoryListController);
 
-    productCategoryListController.$inject = ['$scope', 'apiService', 'notificationService'];
+    productCategoryListController.$inject = ['$scope', 'apiService', 'notificationService', '$ngBootbox'];
 
-    function productCategoryListController($scope, apiService, notificationService) {
+    function productCategoryListController($scope, apiService, notificationService,$ngBootbox) {
         $scope.productCategories = [];
         $scope.page = 0;
         $scope.pagesCount = 0;
-        $scope.getProductCagories = getProductCagories;
         $scope.keyword = '';
         $scope.flagFirst = true;
         $scope.search = search;
+        $scope.getProductCagories = getProductCagories;
+        $scope.deleteProductCategory = deleteProductCategory;
 
         $scope.EnterSearch = function (keyEvent) {
             if (keyEvent.which === 13) {
@@ -46,9 +47,23 @@
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
                 $scope.totalCount = result.data.TotalCount;
-
             }, function () {
                 console.log('Load productcategory failed.');
+            });
+        }
+
+        function deleteProductCategory(id) {
+            $ngBootbox.confirm('Bạn có muốn xóa bản ghi này không?')
+            .then(function () {
+                var config = { params: { id: id } };
+                apiService.del('/api/productcategory/delete', config,
+                    function () {
+                        notificationService.displaySuccess('Xóa thành công!');
+                        getProductCagories();
+                    },
+                    function () {
+                        notificationService.displayError('Xóa không thành công!');
+                    })
             });
         }
 
