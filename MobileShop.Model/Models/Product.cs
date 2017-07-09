@@ -25,21 +25,21 @@ namespace MobileShop.Model.Models
         public string Image { get; set; }
 
         [Column(TypeName ="xml")]
-        public string MoreImage { get; set; }
+        public string MoreImages { get; set; }
 
         [Required]
         public decimal Price { get; set; }
 
-        public decimal PromotionPrice { get; set; }
+        public decimal? PromotionPrice { get; set; }
 
-        public int Warranty { get; set; }
+        public int? Warranty { get; set; }
 
         [MaxLength(500)]
         public string Description { get; set; }
 
         public string Content { get; set; }
 
-        public bool HomeFlag { get; set; }
+        public bool? HomeFlag { get; set; }
 
         public bool HotFlag { get; set; }
 

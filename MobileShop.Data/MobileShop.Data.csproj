@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201707041515497_ChangeHomeFlag.Designer.cs">
       <DependentUpon>201707041515497_ChangeHomeFlag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707090947555_changeDBProduct.cs" />
+    <Compile Include="Migrations\201707090947555_changeDBProduct.Designer.cs">
+      <DependentUpon>201707090947555_changeDBProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileShopDbContext.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -150,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707041515497_ChangeHomeFlag.resx">
       <DependentUpon>201707041515497_ChangeHomeFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707090947555_changeDBProduct.resx">
+      <DependentUpon>201707090947555_changeDBProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
