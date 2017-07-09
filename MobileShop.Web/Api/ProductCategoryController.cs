@@ -10,20 +10,23 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace MobileShop.Web.Api
 {
     [RoutePrefix("api/productcategory")]
     public class ProductCategoryController : ApiControllerBase
     {
-        #region  Initial
+        #region Initial
+
         private IProductCategoryService _productCategoryService;
 
         public ProductCategoryController(IErrorService errorService, IProductCategoryService productCategoryService) : base(errorService)
         {
             this._productCategoryService = productCategoryService;
         }
-        #endregion
+
+        #endregion Initial
 
         [Route("getall")]
         [HttpGet]
@@ -99,12 +102,14 @@ namespace MobileShop.Web.Api
         [AllowAnonymous]
         public HttpResponseMessage Update(HttpRequestMessage request, ProductCategoryViewModel productCategoryVm)
         {
-            return CreateHttpResponse(request, () => {
+            return CreateHttpResponse(request, () =>
+            {
                 HttpResponseMessage response = null;
                 if (!ModelState.IsValid)
                 {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest,ModelState);
-                }else
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
                 {
                     var dbProductCategory = _productCategoryService.GetByID(productCategoryVm.ID);
 
@@ -125,7 +130,8 @@ namespace MobileShop.Web.Api
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
         {
-            return CreateHttpResponse(request, () => {
+            return CreateHttpResponse(request, () =>
+            {
                 var model = _productCategoryService.GetByID(id);
                 var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(model);
 
@@ -147,6 +153,26 @@ namespace MobileShop.Web.Api
 
                 var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(oldProductCategory);
                 response = request.CreateResponse(HttpStatusCode.OK, oldProductCategory);
+                return response;
+            });
+        }
+
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listCheckedID)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                var listID = new JavaScriptSerializer().Deserialize<List<int>>(listCheckedID);
+                foreach (var item in listID)
+                {
+                    _productCategoryService.Delete(item);
+                }
+                _productCategoryService.SaveChanges();
+
+                response = request.CreateResponse(HttpStatusCode.OK, listID.Count);
                 return response;
             });
         }
