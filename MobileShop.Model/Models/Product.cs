@@ -11,55 +11,41 @@ namespace MobileShop.Model.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int ID { set; get; }
 
         [Required]
         [MaxLength(256)]
-        public string Name { get; set; }
+        public string Name { set; get; }
 
         [Required]
         [MaxLength(256)]
-        public string Alias { get; set; }
-
-        [MaxLength(256)]
-        public string Image { get; set; }
-
-        [Column(TypeName ="xml")]
-        public string MoreImages { get; set; }
+        public string Alias { set; get; }
 
         [Required]
-        public decimal Price { get; set; }
+        public int CategoryID { set; get; }
 
-        public decimal? PromotionPrice { get; set; }
+        [MaxLength(256)]
+        public string Image { set; get; }
 
-        public int? Warranty { get; set; }
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
+
+        public decimal Price { set; get; }
+
+        public decimal? PromotionPrice { set; get; }
+        public int? Warranty { set; get; }
 
         [MaxLength(500)]
-        public string Description { get; set; }
+        public string Description { set; get; }
+        public string Content { set; get; }
 
-        public string Content { get; set; }
+        public bool? HomeFlag { set; get; }
+        public bool? HotFlag { set; get; }
+        public int? ViewCount { set; get; }
 
-        public bool? HomeFlag { get; set; }
-
-        public bool HotFlag { get; set; }
-
-        public int? ViewCount { get; set; }
-
-        public string Tags { get; set; }
-
-        [Required]
-        public int Quantity { get; set; }
-
-        [Required]
-        public int OriginalPrice { get; set; }
-
-        public int CategoryID { get; set; }
+        public string Tags { set; get; }
 
         [ForeignKey("CategoryID")]
         public virtual ProductCategory ProductCategory { set; get; }
-         
-        public virtual IEnumerable<ProductTag> ProductTags { set; get; }
-
-        public virtual IEnumerable<OrderDetail> OrderDetails { set; get; }
     }
 }

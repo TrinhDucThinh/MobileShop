@@ -1,24 +1,23 @@
 ﻿using AutoMapper;
-using MobileShop.Model.Models;
-using MobileShop.Service;
-using MobileShop.Web.Infrastructure.Core;
-using MobileShop.Web.Infrastructure.Extensions;
-using MobileShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Mvc;
+using System.Web.Http;
 using System.Web.Script.Serialization;
+using MobileShop.Model.Models;
+using MobileShop.Service;
+using MobileShop.Web.Infrastructure.Core;
+using MobileShop.Web.Infrastructure.Extensions;
+using MobileShop.Web.Models;
 
-namespace MobileShop.Web.Api
+namespace TeduShop.Web.Api
 {
     [RoutePrefix("api/product")]
     public class ProductController : ApiControllerBase
     {
         #region Initialize
-
         private IProductService _productService;
 
         public ProductController(IErrorService errorService, IProductService productService)
@@ -27,7 +26,7 @@ namespace MobileShop.Web.Api
             this._productService = productService;
         }
 
-        #endregion Initialize
+        #endregion
 
         [Route("getallparents")]
         [HttpGet]
@@ -43,7 +42,6 @@ namespace MobileShop.Web.Api
                 return response;
             });
         }
-
         [Route("getbyid/{id:int}")]
         [HttpGet]
         public HttpResponseMessage GetById(HttpRequestMessage request, int id)
@@ -85,6 +83,7 @@ namespace MobileShop.Web.Api
                 return response;
             });
         }
+
 
         [Route("create")]
         [HttpPost]
@@ -168,7 +167,6 @@ namespace MobileShop.Web.Api
                 return response;
             });
         }
-
         [Route("deletemulti")]
         [HttpDelete]
         [AllowAnonymous]

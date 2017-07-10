@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('productAddController', productAddController);
     
-    productAddController.$inject = ['apiService', '$scope', 'notificationService', '$state','commonService'];
+    productAddController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService'];
 
-    function productAddController(apiService, $scope, notificationService, $state,commonService) {
+    function productAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.product = {
             CreatedDate: new Date(),
             Status: true,
@@ -13,26 +13,19 @@
             height: '200px'
         }
         $scope.AddProduct = AddProduct;
-        $scope.ChooseImage = ChooseImage;
-        $scope.getSeoTitle = getSeoTitle;
 
-        function getSeoTitle() {
+        $scope.GetSeoTitle = GetSeoTitle;
+
+        function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
-
         }
-        function ChooseImage() {
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (fileUrl) {
-                $scope.product.Image = fileUrl;
-            }
 
-            finder.popup();
-        }
+
         function AddProduct() {
             apiService.post('api/product/create', $scope.product,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
-                    $state.go('product_categories');
+                    $state.go('products');
                 }, function (error) {
                     notificationService.displayError('Thêm mới không thành công.');
                 });
@@ -44,7 +37,13 @@
                 console.log('Cannot get list parent');
             });
         }
-
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.product.Image = fileUrl;
+            }
+            finder.popup();
+        }
         loadProductCategory();
     }
 })(angular.module('mobileshop.products'));
