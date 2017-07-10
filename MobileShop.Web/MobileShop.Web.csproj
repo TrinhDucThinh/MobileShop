@@ -225,6 +225,9 @@
     <Content Include="app\app.js" />
     <Content Include="app\components\home\homeView.html" />
     <Content Include="app\components\home\homeController.js" />
+    <Content Include="app\components\home\rootController.js" />
+    <Content Include="app\components\login\loginController.js" />
+    <Content Include="app\components\login\loginView.html" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productAddView.html" />
     <Content Include="app\components\products\productEditController.js" />
@@ -245,6 +248,7 @@
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\commonService.js" />
     <Content Include="app\shared\services\notificationService.js" />
+    <Content Include="app\shared\views\baseView.html" />
     <Content Include="Assets\admin\ckfinder\changelog.txt" />
     <Content Include="Assets\admin\ckfinder\ckfinder.html" />
     <Content Include="Assets\admin\ckfinder\ckfinder.js" />
@@ -4675,7 +4679,6 @@
     <Folder Include="app\shared\navigation\" />
     <Folder Include="Assets\client\" />
     <Folder Include="UploadedFiles\" />
-    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Index.cshtml" />
