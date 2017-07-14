@@ -1,0 +1,10 @@
+﻿Add WebConfig:
+
+1.  <modules runAllManagedModulesForAllRequests="true">
+      <remove name="WebDAVModule" />
+    </modules>
+	inner system.webServer tag
+	as handlers tag
+2. add
+	<remove name="WebDAV" />
+	inner handlers tag

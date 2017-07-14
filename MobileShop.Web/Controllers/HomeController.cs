@@ -26,5 +26,23 @@ namespace MobileShop.Web.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult Footer()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult Header()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult Category()
+        {
+            return PartialView();
+        }
     }
 }
