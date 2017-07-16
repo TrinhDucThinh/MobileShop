@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201707091740286_ChangeDBTest.Designer.cs">
       <DependentUpon>201707091740286_ChangeDBTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707160312261_updateFooter.cs" />
+    <Compile Include="Migrations\201707160312261_updateFooter.Designer.cs">
+      <DependentUpon>201707160312261_updateFooter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileShopDbContext.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -164,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707091740286_ChangeDBTest.resx">
       <DependentUpon>201707091740286_ChangeDBTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707160312261_updateFooter.resx">
+      <DependentUpon>201707160312261_updateFooter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

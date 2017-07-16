@@ -12,7 +12,7 @@ namespace MobileShop.Model.Models
     public class Footer
     {
         [Key]
-        public string MyProperty { get; set; }
+        public string ID { get; set; }
 
         public string Content { get; set; }
     }
