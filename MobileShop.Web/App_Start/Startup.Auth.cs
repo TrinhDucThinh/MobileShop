@@ -62,10 +62,13 @@ namespace MobileShop.Web.App_Start
                 context.Validated();
             }
 
+
+            //cross domain
             public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
             {
                 var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
 
+                //login for alll
                 if (allowedOrigin == null) allowedOrigin = "*";
 
                 context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });

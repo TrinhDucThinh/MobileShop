@@ -5,10 +5,6 @@ namespace MobileShop.Web.Infrastructure.Core
 {
     public class PaginationSet<T>
     {
-        public int Page { get; set; }
-
-        public int TotalPages { get; set; }
-
         public int Count
         {
             get
@@ -17,8 +13,10 @@ namespace MobileShop.Web.Infrastructure.Core
             }
         }
 
+        public int Page { get; set; }
+        public int TotalPages { get; set; }
         public int TotalCount { get; set; }
-
+        public int MaxPage { set; get; }
         public IEnumerable<T> Items { get; set; }
     }
 }

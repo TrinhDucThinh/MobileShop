@@ -11,6 +11,8 @@
         $scope.pagesCount = 0;
         $scope.keyword = '';
         $scope.isAll = false;
+        $scope.isFirst = true;
+        $scope.isDelete = false;
 
         $scope.search = search;
         $scope.getProducts = getProducts;
@@ -30,7 +32,8 @@
             }
             apiService.del('api/product/deletemulti', config, function (result) {
                 notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
-                search();
+                $scope.isDelete = true;
+                getProducts();
             }, function (error) {
                 notificationService.displayError('Xóa không thành công');
             });
@@ -70,7 +73,8 @@
                 }
                 apiService.del('api/product/delete', config, function () {
                     notificationService.displaySuccess('Xóa thành công');
-                    search();
+                    $scope.isDelete = true;
+                    getProducts();
                 }, function () {
                     notificationService.displayError('Xóa không thành công');
                 })
@@ -78,6 +82,7 @@
         }
 
         function search() {
+            $scope.isDelete == false
             getProducts();
         }
 
@@ -91,13 +96,21 @@
                 }
             }
             apiService.get('/api/product/getall', config, function (result) {
-                if (result.data.TotalCount == 0) {
-                    notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
+                console.log($scope.isDelete == false);
+                if ($scope.isFirst == false && $scope.isDelete==false){
+                    if (result.data.TotalCount == 0) {
+                        notificationService.displayWarning('Không có bản ghi nào được tìm thấy.');
+                    } else {
+                        notificationService.displayWarning(result.data.TotalCount + ' bản ghi nào được tìm thấy.');
+                    }
+                    
                 }
                 $scope.products = result.data.Items;
                 $scope.page = result.data.Page;
                 $scope.pagesCount = result.data.TotalPages;
                 $scope.totalCount = result.data.TotalCount;
+                $scope.isFirst = false;
+                
             }, function () {
                 console.log('Load product failed.');
             });
