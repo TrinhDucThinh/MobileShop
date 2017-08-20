@@ -14,6 +14,13 @@ namespace MobileShop.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Search",
+                url: "tim-kiem.html",
+                defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
+                namespaces: new string[] { "TeduShop.Web.Controllers" }
+            );
+
+            routes.MapRoute(
                 name:"Home",
                 url: "trang-chu.html",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
