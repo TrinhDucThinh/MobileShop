@@ -7,6 +7,7 @@ using MobileShop.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace MobileShop.Web.Controllers
 {
@@ -24,9 +25,16 @@ namespace MobileShop.Web.Controllers
         #endregion
 
         // GET: Product
-        public ActionResult Detail()
+        public ActionResult Detail(int productId)
         {
-            return View();
+            var productModel = _productService.GetById(productId);
+            var viewModel = Mapper.Map<Product, ProductViewModel>(productModel);
+            var relatedProduct = _productService.GetReatedProducts(productId, 6);
+            ViewBag.RelatedProducts = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(relatedProduct);
+
+            List<string> listImages = new JavaScriptSerializer().Deserialize<List<string>>(viewModel.MoreImages);
+            ViewBag.MoreImages = listImages;
+            return View(viewModel);
         }
 
         public ActionResult Category(int id,int page=1,string sort="")

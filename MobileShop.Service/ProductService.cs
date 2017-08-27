@@ -31,6 +31,8 @@ namespace MobileShop.Service
         IEnumerable<string> GetListProductByName(string keyword);
 
         Product GetById(int id);
+     
+        IEnumerable<Product> GetReatedProducts(int id, int top);
 
         void Save();
     }
@@ -196,6 +198,12 @@ namespace MobileShop.Service
             totalRow = query.Count();
 
             return query.OrderBy(x => x.Alias).Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<Product> GetReatedProducts(int id, int top)
+        {
+            var product = _productRepository.GetSingleById(id);
+            return _productRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

@@ -102,6 +102,10 @@
     <Compile Include="Migrations\201707160312261_updateFooter.Designer.cs">
       <DependentUpon>201707160312261_updateFooter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708201614275_AddMoreQuantity.cs" />
+    <Compile Include="Migrations\201708201614275_AddMoreQuantity.Designer.cs">
+      <DependentUpon>201708201614275_AddMoreQuantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileShopDbContext.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -171,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707160312261_updateFooter.resx">
       <DependentUpon>201707160312261_updateFooter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708201614275_AddMoreQuantity.resx">
+      <DependentUpon>201708201614275_AddMoreQuantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -35,6 +35,13 @@ namespace MobileShop.Web
             );
 
             routes.MapRoute(
+             name: "Product",
+             url: "{alias}.p-{productId}.html",
+             defaults: new { controller = "Product", action = "Detail", productId = UrlParameter.Optional },
+               namespaces: new string[] { "TeduShop.Web.Controllers" }
+            );
+
+            routes.MapRoute(
                 name:"product category",
                 url:"{alias}.pc-{id}.html",
                 defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
