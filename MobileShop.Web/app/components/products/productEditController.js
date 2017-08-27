@@ -54,6 +54,7 @@
             }
             finder.popup();
         }
+
         $scope.ChooseMoreImage = function () {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
@@ -64,6 +65,7 @@
             }
             finder.popup();
         }
+
         loadProductCategory();
         loadProductDetail();
     }

@@ -1,0 +1,15 @@
+﻿.tag{
+    display:block;
+}
+.taglist li{
+	float: left;
+    border-radius: 5% 5%;
+    background: #ddd;
+    padding: 5px;
+    margin-left: 4px;
+    font-size: 1em;
+    font-family: sans-serif;
+}
+.taglist a{
+    text-decoration:none;
+}

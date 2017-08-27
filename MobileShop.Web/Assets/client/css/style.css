@@ -701,9 +701,9 @@ p.m_text {
 }
 .left-grid-view .mask,.left-grid-view .content {
    position: absolute;
-	overflow: hidden;
-	top: 209px;
-	left: 163px;
+   overflow: hidden;
+   top: 195px;
+   left: 170px;
 }
 .grid-view-left img {
    -webkit-transition: all 0.3s ease-in-out;
@@ -737,10 +737,10 @@ p.m_text {
 }
 .info {
    display: block;
-	background: url(../images/label_new.png) no-repeat;
-	text-indent: -9999px;
-	width: 75px;
-	height: 75px;
+   background: url(../images/label_new.png) no-repeat;
+   text-indent: -9999px;
+   width: 800px;
+   height: 800px;
 }
 /*--product--*
 /*--contact--*/

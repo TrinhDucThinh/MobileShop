@@ -30,10 +30,18 @@ namespace MobileShop.Service
 
         IEnumerable<string> GetListProductByName(string keyword);
 
+        Tag GetTag(string tagID);
+
         Product GetById(int id);
      
         IEnumerable<Product> GetReatedProducts(int id, int top);
 
+        IEnumerable<Tag> GetListTagByProductId(int productId);
+
+        IEnumerable<Product> GetListProductByTag(string tagId,int page, int pageSize,out int totalPage);
+
+        void IncreaseView(int id);
+        
         void Save();
     }
 
@@ -204,6 +212,33 @@ namespace MobileShop.Service
         {
             var product = _productRepository.GetSingleById(id);
             return _productRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Tag> GetListTagByProductId(int id)
+        {
+            return _productTagRepository.GetMulti(x => x.ProductID == id, new string[] { "Tag" }).Select(y => y.Tag);
+        }
+
+        public void IncreaseView(int id)
+        {
+            var product = _productRepository.GetSingleById(id);
+            if (product.ViewCount.HasValue)
+            {
+                product.ViewCount++;
+            }
+            else
+                product.ViewCount = 1;
+        }
+
+        public IEnumerable<Product> GetListProductByTag(string tagId,int page, int pageSize, out int totalRow)
+        {
+            return _productRepository.GetListProductByTag(tagId, page, pageSize, out totalRow);
+            
+        }
+
+        public Tag GetTag(string tagID)
+        {
+            return _tagRepository.GetSingleByCondition(x => x.ID == tagID);
         }
     }
 }

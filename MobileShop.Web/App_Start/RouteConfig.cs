@@ -47,7 +47,12 @@ namespace MobileShop.Web
                 defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
                 namespaces: new string[] { "MobileShop.Web.Controllers" }
                 );
-
+            routes.MapRoute(
+                 name: "TagList",
+                 url: "tag/{tagId}.html",
+                 defaults: new { controller = "Product", action = "ListByTag", tagId = UrlParameter.Optional },
+                   namespaces: new string[] { "TeduShop.Web.Controllers" }
+             );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
