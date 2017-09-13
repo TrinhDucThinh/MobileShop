@@ -110,6 +110,22 @@
     <Compile Include="Migrations\201708270250272_AddForeignKey.Designer.cs">
       <DependentUpon>201708270250272_AddForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709121129265_AddPageTest.cs" />
+    <Compile Include="Migrations\201709121129265_AddPageTest.Designer.cs">
+      <DependentUpon>201709121129265_AddPageTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121136141_AddPageTest1.cs" />
+    <Compile Include="Migrations\201709121136141_AddPageTest1.Designer.cs">
+      <DependentUpon>201709121136141_AddPageTest1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121137276_AddPageTest2.cs" />
+    <Compile Include="Migrations\201709121137276_AddPageTest2.Designer.cs">
+      <DependentUpon>201709121137276_AddPageTest2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709121139448_AddPageTest3.cs" />
+    <Compile Include="Migrations\201709121139448_AddPageTest3.Designer.cs">
+      <DependentUpon>201709121139448_AddPageTest3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MobileShopDbContext.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -185,6 +201,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708270250272_AddForeignKey.resx">
       <DependentUpon>201708270250272_AddForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121129265_AddPageTest.resx">
+      <DependentUpon>201709121129265_AddPageTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121136141_AddPageTest1.resx">
+      <DependentUpon>201709121136141_AddPageTest1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121137276_AddPageTest2.resx">
+      <DependentUpon>201709121137276_AddPageTest2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709121139448_AddPageTest3.resx">
+      <DependentUpon>201709121139448_AddPageTest3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

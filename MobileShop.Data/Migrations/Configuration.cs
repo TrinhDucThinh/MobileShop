@@ -7,6 +7,8 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
+    using System.Diagnostics;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<MobileShop.Data.MobileShopDbContext>
@@ -23,6 +25,7 @@
             //Create user sample
             // CreateUser(context);
             // CreateProductCategorySample(context);
+            CreatePage(context);
             CreateSilde(context);
 
         }
@@ -107,6 +110,33 @@
                 };
                 context.Slides.AddRange(listSlide);
                 context.SaveChanges();
+            }
+        }
+        private void CreatePage(MobileShopDbContext context)
+        {
+            try
+            {
+                var page = new Page()
+                {
+                    Name = "Giới thiệu",
+                    Alias = "gioi-thieu",
+                    Content = @"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium ",
+                    Status = true
+
+                };
+                context.Pages.Add(page);
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach(var eve in ex.EntityValidationErrors)
+                {
+                    Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
+                    }
+                }
             }
         }
     }

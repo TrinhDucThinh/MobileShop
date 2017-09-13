@@ -52,6 +52,7 @@
     <Compile Include="CommonService.cs" />
     <Compile Include="ErrorService.cs" />
     <Compile Include="PostCategoryService.cs" />
+    <Compile Include="PageService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="PostTagService.cs" />
     <Compile Include="ProductCategoryService.cs" />

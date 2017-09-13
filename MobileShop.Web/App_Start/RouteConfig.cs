@@ -21,10 +21,10 @@ namespace MobileShop.Web
             );
 
             routes.MapRoute(
-                name:"Home",
+                name: "Home",
                 url: "trang-chu.html",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces:new string[]{ "MobileShop.Web.Controllers"}
+                namespaces: new string[] { "MobileShop.Web.Controllers" }
             );
 
             routes.MapRoute(
@@ -35,6 +35,14 @@ namespace MobileShop.Web
             );
 
             routes.MapRoute(
+                name: "Page",
+                url: "trang/{alias}.html",
+                defaults: new { controller = "Page", action = "Index", alias = UrlParameter.Optional },
+                namespaces: new string[] { "MobileShop.Web.Controller" }
+
+                );
+
+            routes.MapRoute(
              name: "Product",
              url: "{alias}.p-{productId}.html",
              defaults: new { controller = "Product", action = "Detail", productId = UrlParameter.Optional },
@@ -42,8 +50,8 @@ namespace MobileShop.Web
             );
 
             routes.MapRoute(
-                name:"product category",
-                url:"{alias}.pc-{id}.html",
+                name: "product category",
+                url: "{alias}.pc-{id}.html",
                 defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
                 namespaces: new string[] { "MobileShop.Web.Controllers" }
                 );

@@ -17,6 +17,7 @@ namespace MobileShop.Web.Mapping
             Mapper.CreateMap<ProductTag, ProductTagViewModel>();
             Mapper.CreateMap<Footer, FooterViewModel>();
             Mapper.CreateMap<Slide, SlideViewModel>();
+            Mapper.CreateMap<Page, PageViewModel>();
 
         }
     }

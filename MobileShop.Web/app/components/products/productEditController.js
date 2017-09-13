@@ -56,6 +56,7 @@
         }
 
         $scope.ChooseMoreImage = function () {
+           
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
                 $scope.$apply(function () {
@@ -64,6 +65,12 @@
 
             }
             finder.popup();
+        }
+
+        $scope.deleteImage = function ($event) {
+            var item = $event.currentTarget.id;
+            var index = $scope.moreImg.indexOf(item);
+            $scope.moreImg.splice(index, 1);
         }
 
         loadProductCategory();
