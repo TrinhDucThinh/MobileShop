@@ -1,0 +1,49 @@
+﻿
+Question1: Different between SingleOrDefault and FirstOrDefaut StackOverflow https://stackoverflow.com/questions/1745691/linq-when-to-use-singleordefault-vs-firstordefault-with-filtering-criteria
+If your result set returns 0 records:
+	Answer 1
+
+			SingleOrDefault returns the default value for the type (e.g. default for int is 0)
+			FirstOrDefault returns the default value for the type
+			If you result set returns 1 record:
+
+			SingleOrDefault returns that record
+			FirstOrDefault returns that record
+			If your result set returns many records:
+
+			SingleOrDefault throws an exception
+			FirstOrDefault returns the first record
+			Conclusion:
+
+			If you want an exception to be thrown if the result set contains many records, use SingleOrDefault.
+
+			If you always want 1 record no matter what the result set contains, use FirstOrDefault
+	Answer 2
+			-There is
+				a semantical difference
+				a performance difference
+			between the two.
+
+				+ Semantical Difference:
+
+					FirstOrDefault returns a first item of potentially multiple (or default if none exists).
+					SingleOrDefault assumes that there is a single item and returns it (or default if none exists). Multiple items are a violation of contract, an exception is thrown.
+				+ Performance Difference
+
+					FirstOrDefault is usually faster, it iterates until it finds the element and only has to iterate the whole enumerable when it doesn't find it. In many cases, there is a high probability to find an item.
+					SingleOrDefault needs to check if there is only one element and therefore always iterates the whole enumerable. To be precise, it iterates until it finds a second element and throws an exception. But in most cases, there is no second element.
+			-Conclusion
+
+			Use FirstOrDefault if you don't care how many items there are or when you can't afford checking uniqueness (e.g. in a very large collection). When you check uniqueness on adding the items to the collection, it might be too expensive to check it again when searching for those items.
+			Use SingleOrDefault if you don't have to care about performance too much and want to make sure that the assumption of a single item is clear to the reader and checked at runtime.
+			In practice, you use First / FirstOrDefault often even in cases when you assume a single item, to improve performance. You should still remember that Single / SingleOrDefault can improve readability (because it states the assumption of a single item) and stability (because it checks it) and use it appropriately.
+2. Fix bug
+-Create script  update-database -f -script
+-Rollback 
+update-database -TargetMigration "AddColumn2"
+
+Cancel migrations:
+
+	-enable-migrations -Force
+	-add-migration InitialDb -Force
+	-update-database

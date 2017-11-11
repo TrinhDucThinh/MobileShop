@@ -6,11 +6,13 @@ namespace MobileShop.Model.Models
     [Table("ProductTags")]
     public class ProductTag
     {
-        [Key, Column(Order =0)]
+        [Key, Column(Order = 1)]
         public int ProductID { get; set; }
 
-        [Key,Column(Order=1)]
+        [Key]
         [MaxLength(50)]
+        [Column(TypeName = "varchar", Order = 2)]
+
         public string TagID { get; set; }
 
         [ForeignKey("ProductID")]

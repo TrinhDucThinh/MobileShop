@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MobileShop.Model.Abstract;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MobileShop.Model.Models
 {
     [Table("Posts")]
-    public class Post
+    public class Post:Auditable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -32,7 +33,12 @@ namespace MobileShop.Model.Models
 
         public int? ViewCount { get; set; }
 
+        [Required]
+        public bool Status { get; set; }
+
         public int  CategoryID { get; set; }
+
+        
 
         [ForeignKey("CategoryID")]
         public virtual PostCategory PostCategories { set; get; }

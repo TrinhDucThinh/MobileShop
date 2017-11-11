@@ -24,7 +24,8 @@ namespace MobileShop.Model.Models
         [MaxLength(256)]
         public string Image { get; set; }
 
-        public XElement MoreImage { get; set; }
+        [Column(TypeName ="xml")]
+        public string MoreImage { get; set; }
 
         [Required]
         public decimal Price { get; set; }
@@ -43,8 +44,6 @@ namespace MobileShop.Model.Models
         public bool HotFlag { get; set; }
 
         public int? ViewCount { get; set; }
-
-        public string MetaKeyWord { get; set; }
 
         public string Tags { get; set; }
 
